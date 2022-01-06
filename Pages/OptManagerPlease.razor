@@ -1,0 +1,339 @@
+﻿@page "/OptMange"
+@inject NavigationManager Nov
+
+<h3>options for manager</h3>
+<head>
+    <meta http-equiv="refresh" content="10" />
+</head>
+<p><em>Name: @user.Namey</em></p>
+<br>
+<p><em>The Id: @user.getId</em></p>
+<br>
+<p><em>Zone: @user.nameZone</em></p>
+<br>
+<p><em>neighabored: @user.nameNeighabored </em></p>
+
+<label for="SelectAmount">Select Amount People that allowed to arrive to event:</label>
+<br>
+<input type="text" @bind-value="peopleenter" @bind-value:event="oninput" id="selectamountpeople" name="selectamount">
+<input type="text" @bind-value="legalNumber" @bind-value:event="oninput" id="excep" name="explationtouser">
+<br>
+<button class="btn btn-primary" @onclick="AmountpeopleEnter">Update Amount People </button>
+<br>
+<br>
+<button class="btn btn-primary" @onclick="movepageToChargeCredits">enter to page to select charge credits </button>
+<br>
+<br>
+<label for="moneyToY">how much money you have?</label>
+<input type="text" @bind-value="amountcreditsyofyou" @bind-value:event="oninput" id="amountcreditsuser" name="creditsOfU">
+
+
+
+@code {
+    Data.User user;
+    Data.Country country;
+    double amountcreditsyofyou;
+    String peopleenter;
+    String legalNumber;
+    int peopleEnter;
+    Data.Zone zone;
+    Data.Zone zoni;
+    Data.Neighabored neighboree;
+    Data.Neighabored neigee;
+    int countmothszone;
+    int countmonthsneighbored;
+    Data.dataMonthZone datazone;
+    Data.dataMonthNeighbored dataneigh;
+    protected override void OnInitialized()
+    {
+        user = Data.User.GetInstance;
+        country = Data.Country.GetInstance;
+        if (user.nameZone != null && user.nameNeighabored != null)
+        {
+            countmothszone = searchgetIdMaxZone();
+            countmonthsneighbored = searchgetIdMaxNeighbored();
+        }
+        amountcreditsyofyou = user.Somecredts;
+
+    }
+
+
+    private void movepageToChargeCredits()
+    {
+        Nov.NavigateTo("/ChargeCredits");
+    }
+    private void AmountpeopleEnter()
+    {
+        try
+        {
+            if (!user.getisload)
+            {
+                legalNumber = "you must loggin";
+            }
+            else
+            {
+                if (!user.getisload)
+                    legalNumber = "You must load data";
+                else
+                {
+                    if ((user.nameZone == null) || (user.nameZone == ""))
+                        legalNumber = "You must select zone";
+
+
+                    else
+                    {
+                        if (!(user.isManage))
+                        {
+                            legalNumber = "you are not manage";
+                        }
+                        else
+                        {
+                            peopleEnter = int.Parse(peopleenter);
+                            if (user.nameEventPlace == 1)
+                            {
+                                if (peopleEnter > 60)
+                                {
+                                    legalNumber = "you select number that bigger 60";
+                                }
+                                else
+                                {
+                                    int i = searchZone();
+                                    int j = searxhneighbor();
+                                    int p = country.zones[i].neighaboress[j].somepat;
+                                    double mana = (double)peopleEnter / 60;
+                                    int totalit = (int)((Math.Pow(2.72, mana)) * p);
+                                    if (totalit >= country.zones[i].neighaboress[j].somepeop)
+                                        legalNumber = "the number of healths bigger all people";
+                                    else
+                                    {
+                                        country.zones[i].neighaboress[j].somepat = totalit;
+                                        country.zones[i].neighaboress[j].somehealts = country.zones[i].neighaboress[j].somepeop - country.zones[i].neighaboress[j].somepat;
+                                        double mananeigh = (double)(country.zones[i].neighaboress[j].somepat) / (country.zones[i].neighaboress[j].somepeop);
+                                        country.zones[i].totalpateints = (int)(mananeigh * country.zones[i].totalpeople);
+                                        country.zones[i].totalhealths = country.zones[i].totalpeople - country.zones[i].totalpateints;
+                                        country.zones[i].HealthsPercent = (double)(country.zones[i].totalhealths) / (double)(country.zones[i].totalpeople);
+                                        country.zones[i].neighaboress[j].getPercentHealths = (double)(country.zones[i].neighaboress[j].somehealts) / (double)(country.zones[i].neighaboress[j].somepeop);
+                                        datazone = new Data.dataMonthZone();
+
+                                        countmothszone++;
+                                        datazone.getMonthId = countmothszone;
+                                        datazone.getNmaePlace = country.zones[i].namezone;
+                                        datazone.getCountPeople = country.zones[i].totalpeople;
+                                        datazone.getCountHealths = country.zones[i].totalhealths;
+                                        datazone.getCountPatients = country.zones[i].totalpateints;
+                                        datazone.getPercentHealths = country.zones[i].HealthsPercent;
+                                        datazone.getAmountEconomy = country.zones[i].getAmountEconomy;
+                                        country.zones[i].datamonthzone.Add(datazone);
+                                        dataneigh = new Data.dataMonthNeighbored();
+                                        countmonthsneighbored++;
+                                        dataneigh.getMonthId = countmonthsneighbored;
+                                        dataneigh.getNmaePlace = country.zones[i].neighaboress[j].NameNeigh;
+                                        dataneigh.getCountPeople = country.zones[i].neighaboress[j].somepeop;
+                                        dataneigh.getCountHealths = country.zones[i].neighaboress[j].somehealts;
+                                        dataneigh.getCountPatients = country.zones[i].neighaboress[j].somepat;
+                                        dataneigh.getPercentHealths = country.zones[i].neighaboress[j].getPercentHealths;
+                                        dataneigh.getAmountEconomy = country.zones[i].neighaboress[j].getAmountEconomy;
+                                        country.zones[i].neighaboress[j].datamonthneighbored.Add(dataneigh);
+                                        legalNumber = "you chang the amount of patients";
+
+
+                                    }
+                                }
+
+
+                            }
+                            if (user.nameEventPlace == 2)
+                            {
+                                if (peopleEnter > 2500)
+                                {
+                                    legalNumber = "you select number that bigger 2500";
+                                }
+                                else
+                                {
+                                    int i = searchZone();
+                                    int j = searxhneighbor();
+                                    int p = country.zones[i].neighaboress[j].somepat;
+                                    double mana = (double)peopleEnter / 2500;
+                                    int totalit = (int)((Math.Pow(2.72, mana)) * p);
+                                    if (totalit >= country.zones[i].neighaboress[j].somepeop)
+                                        legalNumber = "the number of healths bigger all people";
+                                    else
+                                    {
+                                        country.zones[i].neighaboress[j].somepat = totalit;
+                                        country.zones[i].neighaboress[j].somehealts = country.zones[i].neighaboress[j].somepeop - country.zones[i].neighaboress[j].somepat;
+                                        double mananeigh = (double)(country.zones[i].neighaboress[j].somepat) / (country.zones[i].neighaboress[j].somepeop);
+                                        country.zones[i].totalpateints = (int)(mananeigh * country.zones[i].totalpeople);
+                                        country.zones[i].totalhealths = country.zones[i].totalpeople - country.zones[i].totalpateints;
+                                        country.zones[i].HealthsPercent = (double)(country.zones[i].totalhealths) / (double)(country.zones[i].totalpeople);
+                                        country.zones[i].neighaboress[j].getPercentHealths = (double)(country.zones[i].neighaboress[j].somehealts) / (double)(country.zones[i].neighaboress[j].somepeop);
+                                        datazone = new Data.dataMonthZone();
+
+                                        countmothszone++;
+                                        datazone.getMonthId = countmothszone;
+                                        datazone.getNmaePlace = country.zones[i].namezone;
+                                        datazone.getCountPeople = country.zones[i].totalpeople;
+                                        datazone.getCountHealths = country.zones[i].totalhealths;
+                                        datazone.getCountPatients = country.zones[i].totalpateints;
+                                        datazone.getPercentHealths = country.zones[i].HealthsPercent;
+                                        datazone.getAmountEconomy = country.zones[i].getAmountEconomy;
+                                        country.zones[i].datamonthzone.Add(datazone);
+                                        dataneigh = new Data.dataMonthNeighbored();
+                                        countmonthsneighbored++;
+                                        dataneigh.getMonthId = countmonthsneighbored;
+                                        dataneigh.getNmaePlace = country.zones[i].neighaboress[j].NameNeigh;
+                                        dataneigh.getCountPeople = country.zones[i].neighaboress[j].somepeop;
+                                        dataneigh.getCountHealths = country.zones[i].neighaboress[j].somehealts;
+                                        dataneigh.getCountPatients = country.zones[i].neighaboress[j].somepat;
+                                        dataneigh.getPercentHealths = country.zones[i].neighaboress[j].getPercentHealths;
+                                        dataneigh.getAmountEconomy = country.zones[i].neighaboress[j].getAmountEconomy;
+                                        country.zones[i].neighaboress[j].datamonthneighbored.Add(dataneigh);
+                                        legalNumber = "you chang the amount of patients";
+                                    }
+                                }
+                            }
+                            if (user.nameEventPlace == 3)
+                            {
+                                if (peopleEnter > 250)
+                                {
+                                    legalNumber = "you select number that bigger 250";
+                                }
+
+                                else
+                                {
+
+                                    int i = searchZone();
+                                    int j = searxhneighbor();
+                                    int p = country.zones[i].neighaboress[j].somepat;
+                                    double mana = (double)peopleEnter / 250;
+                                    int totalit = (int)((Math.Pow(2.72, mana)) * p);
+                                    if (totalit >= country.zones[i].neighaboress[j].somepeop)
+                                        legalNumber = "the number of healths bigger all people";
+                                    else
+                                    {
+                                        country.zones[i].neighaboress[j].somepat = totalit;
+                                        country.zones[i].neighaboress[j].somehealts = country.zones[i].neighaboress[j].somepeop - country.zones[i].neighaboress[j].somepat;
+                                        double mananeigh = (double)(country.zones[i].neighaboress[j].somepat) / (country.zones[i].neighaboress[j].somepeop);
+                                        country.zones[i].totalpateints = (int)(mananeigh * country.zones[i].totalpeople);
+                                        country.zones[i].totalhealths = country.zones[i].totalpeople - country.zones[i].totalpateints;
+                                        country.zones[i].HealthsPercent = (double)(country.zones[i].totalhealths) / (double)(country.zones[i].totalpeople);
+                                        country.zones[i].neighaboress[j].getPercentHealths = (double)(country.zones[i].neighaboress[j].somehealts) / (double)(country.zones[i].neighaboress[j].somepeop);
+                                        datazone = new Data.dataMonthZone();
+
+                                        countmothszone++;
+                                        datazone.getMonthId = countmothszone;
+                                        datazone.getNmaePlace = country.zones[i].namezone;
+                                        datazone.getCountPeople = country.zones[i].totalpeople;
+                                        datazone.getCountHealths = country.zones[i].totalhealths;
+                                        datazone.getCountPatients = country.zones[i].totalpateints;
+                                        datazone.getPercentHealths = country.zones[i].HealthsPercent;
+                                        datazone.getAmountEconomy = country.zones[i].getAmountEconomy;
+                                        country.zones[i].datamonthzone.Add(datazone);
+                                        dataneigh = new Data.dataMonthNeighbored();
+                                        countmonthsneighbored++;
+                                        dataneigh.getMonthId = countmonthsneighbored;
+                                        dataneigh.getNmaePlace = country.zones[i].neighaboress[j].NameNeigh;
+                                        dataneigh.getCountPeople = country.zones[i].neighaboress[j].somepeop;
+                                        dataneigh.getCountHealths = country.zones[i].neighaboress[j].somehealts;
+                                        dataneigh.getCountPatients = country.zones[i].neighaboress[j].somepat;
+                                        dataneigh.getPercentHealths = country.zones[i].neighaboress[j].getPercentHealths;
+                                        dataneigh.getAmountEconomy = country.zones[i].neighaboress[j].getAmountEconomy;
+                                        country.zones[i].neighaboress[j].datamonthneighbored.Add(dataneigh);
+                                        legalNumber = "you chang the amount of patients";
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+
+            }
+        }
+        catch (Exception e)
+        {
+            legalNumber = "you select int number";
+        }
+    }
+    private int searchZone()
+    {
+        int x = 0;
+        for (int i = 0; i < country.zones.Count; i++)
+        {
+            if (country.zones[i].namezone.Equals(user.nameZone))
+            {
+                x = i;
+                break;
+
+            }
+        }
+        return x;
+    }
+    private int searxhneighbor()
+    {
+        int y = 0;
+        for (int i = 0; i < country.zones.Count; i++)
+        {
+            if (country.zones[i].namezone.Equals(user.nameZone))
+            {
+                for (int j = 0; j < country.zones[i].neighaboress.Count; j++)
+                {
+                    if (country.zones[i].neighaboress[j].NameNeigh.Equals(user.nameNeighabored))
+                    {
+                        y = j;
+                        break;
+                    }
+                }
+                break;
+            }
+
+        }
+        return y;
+    }
+    public int searchgetIdMaxZone()
+    {
+        int max = 0;
+        foreach (var zon in country.zones)
+        {
+            if (user.nameZone.Equals(zon.namezone))
+            {
+                zoni = zon;
+                break;
+            }
+        }
+        foreach (var dza in zoni.datamonthzone)
+        {
+            if (dza.getMonthId >= max)
+                max = dza.getMonthId;
+        }
+        return max;
+    }
+    public int searchgetIdMaxNeighbored()
+    {
+        int max = 0;
+        foreach (var zon in country.zones)
+        {
+            if (user.nameZone.Equals(zon.namezone))
+            {
+                zoni = zon;
+                break;
+            }
+        }
+        foreach (var neigh in zoni.neighaboress)
+        {
+            if (user.nameNeighabored.Equals(neigh.NameNeigh))
+            {
+                neigee = neigh;
+                break;
+            }
+        }
+        foreach (var dna in neigee.datamonthneighbored)
+        {
+            if (dna.getMonthId >= max)
+                max = dna.getMonthId;
+        }
+        return max;
+    }
+
+
+
+}

@@ -1,0 +1,82 @@
+﻿<div class="top-row pl-4 navbar navbar-dark">
+    <a class="navbar-brand" href="">BlazorCovidLife</a>
+    <button class="navbar-toggler" @onclick="ToggleNavMenu">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</div>
+
+<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+    <ul class="nav flex-column">
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                <span class="oi oi-home" aria-hidden="true"></span> Home
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="Loggin">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> LoginLogout
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="roleSelect">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> roleaSelect
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="SelectEvent">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> SeletEvent
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="updateData">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> UpdateDta
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="OptMange">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> OptManager
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="ChargeCredits">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> charge Credits
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="HistoryOrNeigh">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> History or neighbor
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="ToSeeUpdateData">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> ToSeeWhenUpdate
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="ToSeeNeighbored">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> ToSeeWhenNeighbored
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="ColourZone">
+                <span class="oi oi-list-rich" aria-hidden="true"></span>ColorZone
+            </NavLink>
+        </li>
+        <li class="nav-item px-3">
+            <NavLink class="nav-link" href="DataOfCountry">
+                <span class="oi oi-list-rich" aria-hidden="true"></span>DataCountry
+            </NavLink>
+        </li>
+    </ul>
+</div>
+
+@code {
+    private bool collapseNavMenu = true;
+
+    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}

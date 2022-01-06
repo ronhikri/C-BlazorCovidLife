@@ -1,0 +1,50 @@
+﻿@page "/SelectEvent"
+@inject NavigationManager Nav
+
+<h3>Select-Event</h3>
+<head>
+    <meta http-equiv="refresh" content="10" />
+</head>
+<p><em>Name: @user.Namey</em></p>
+<br>
+<p><em>The Id: @user.getId</em></p>
+
+<br>
+<br>
+<input type="radio" id="ocassion" name="Even" value="ocassss" checked="@user.nameEventPlace==3" @onclick="@(()=>user.nameEventPlace=3)">
+<label for="ocassion">ocassion</label>
+<br>
+<input type="radio" id="school" name="Even" value="scool" checked="@user.nameEventPlace==2" @onclick="@(()=>user.nameEventPlace=2)">
+<label for="school">School</label>
+<br>
+<input type="radio" id="market" name="Even" value="Markets" checked="@user.nameEventPlace==1" @onclick="@(()=>user.nameEventPlace=1)">
+<label for="market">Market</label>
+<br>
+<br>
+<button class="btn btn-primary" @onclick="movepagess">enter to next page </button>
+<br>
+<br>
+<label for="moneyToYo">how much money you have?</label>
+<input type="text" @bind-value="amountmoney" @bind-value:event="oninput" id="amountuser" name="creditsOfUser">
+@code
+{
+    Data.User user;
+    Data.Country country;
+    double amountmoney;
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        user = Data.User.GetInstance;
+        country = Data.Country.GetInstance;
+        amountmoney = user.Somecredts;
+
+    }
+
+
+    private void movepagess()
+    {
+        Nav.NavigateTo("/updateData");
+    }
+
+
+}

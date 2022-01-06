@@ -1,0 +1,150 @@
+﻿@page "/ToSeeNeighbored"
+
+<h3>ToSeeUpdateNeighbored</h3>
+
+<head>
+    <meta http-equiv="refresh" content="10" />
+</head>
+<p><em>Name: @user.Namey</em></p>
+<br>
+<p><em>The Id: @user.getId</em></p>
+<br>
+<p><em>Zone: @user.nameZone</em></p>
+<br>
+<p><em>neighabored: @user.nameNeighabored </em></p>
+<label for="SelectAmountDataNeighbored">select amount people that will patients and to see the amount of weeks Neighbored:</label>
+<br>
+<input type="text" @bind-value="peopleentering" @bind-value:event="oninput" id="selectamountpeopleNeighbored" name="selectamountNeighbored">
+<input type="text" @bind-value="ecepNeighbored" @bind-value:event="oninput" id="exceping" name="explationtouserNeigh">
+<br>
+<br>
+<button class="btn btn-primary" @onclick="AmountpeopleEnterPleaseing">Update Amount People </button>
+<br>
+<br>
+<br>
+<label for="moneyToY">how much money you have?</label>
+<input type="text" @bind-value="amountcreditsyofy" @bind-value:event="oninput" id="amountcreditus" name="creditsus">
+
+
+@code {
+
+    String peopleentering;
+    String ecepNeighbored;
+    Data.User user;
+    Data.Country country;
+    int peopleEnter;
+    Data.Zone zon;
+    double amountcreditsyofy;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        user = Data.User.GetInstance;
+        country = Data.Country.GetInstance;
+        amountcreditsyofy = user.Somecredts;
+
+    }
+    private void AmountpeopleEnterPleaseing()
+    {
+        int countweeks = 0;
+        int y = 0;
+        int h = 0;
+        try
+        {
+            if (!(user.getLogin))
+                ecepNeighbored = "you must loggin";
+            else
+            {
+                if (!(user.getisload))
+                    ecepNeighbored = "you must load data";
+                else
+                {
+                    if ((user.nameZone == null) || (user.nameZone == "") || (user.nameNeighabored == null) || (user.nameNeighabored == ""))
+                        ecepNeighbored = "you must select zone and neigh";
+                    else
+                    {
+                        peopleEnter = int.Parse(peopleentering);
+                        if (peopleEnter < 0)
+                            ecepNeighbored = "you must enter bigger 0";
+                        else
+                        {
+                            if (!user.isManage && user.Somecredts < 100)
+                                ecepNeighbored = "no enough money";
+                            else
+                            {
+                                int p = searchzone();
+                                int n = searchNeigh();
+                                if (peopleEnter > country.zones[p].neighaboress[n].somepat)
+                                    ecepNeighbored = "you enter bigger somepatients";
+                                else
+                                {
+                                    if (!user.isManage)
+                                        user.Somecredts = user.Somecredts - 100;
+                                    y = country.zones[p].neighaboress[n].somepat;
+                                    h = country.zones[p].neighaboress[n].somehealts;
+                                    while (y > peopleEnter)
+                                    {
+                                        double mana = (double)(y) / (double)(country.zones[p].neighaboress[n].somepeop);
+                                        double hezka = Math.Pow(2.72, mana);
+                                        h = (int)(hezka * y - y + h);
+                                        double mana2 = (double)h / (double)(country.zones[p].neighaboress[n].somepeop);
+                                        y = (int)(y * mana2);
+                                        h = country.zones[p].neighaboress[n].somepeop - y;
+                                        countweeks++;
+                                    }
+                                    ecepNeighbored = countweeks.ToString() + " " + "weeks";
+                                }
+
+                            }
+                        }
+
+
+                    }
+
+                }
+            }
+
+        }
+        catch (Exception e)
+        {
+
+        }
+    }
+    private int searchzone()
+    {
+        int z = 0;
+        for (int i = 0; i < country.zones.Count; i++)
+        {
+            if (country.zones[i].namezone.Equals(user.nameZone))
+            {
+                z = i;
+                break;
+            }
+        }
+        return z;
+    }
+    private int searchNeigh()
+    {
+        int n = 0;
+        foreach (var zone in country.zones)
+        {
+            if (zone.namezone.Equals(user.nameZone))
+            {
+                zon = zone;
+                break;
+            }
+        }
+        for (int j = 0; j < zon.neighaboress.Count; j++)
+        {
+            if (zon.neighaboress[j].NameNeigh.Equals(user.nameNeighabored))
+            {
+                n = j;
+                break;
+            }
+        }
+        return n;
+    }
+
+
+
+}

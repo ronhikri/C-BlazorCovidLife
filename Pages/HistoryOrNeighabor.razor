@@ -1,0 +1,35 @@
+﻿@page "/HistoryOrNeigh"
+
+<h3>historyOrNeighbor</h3>
+<head>
+    <meta http-equiv="refresh" content="10" />
+</head>
+<p><em>Name: @user.Namey</em></p>
+<br>
+<p><em>The Id: @user.getId</em></p>
+<br>
+<input type="radio" id="neighboran" name="HorN" value="neighboredeed" checked="(@user.getselectHistoryOrNeighabores==1)" @onclick="@(()=>user.getselectHistoryOrNeighabores=1)">
+<label for="DataNeighborsplease">ToSeeDataNeighbored</label>
+<br>
+<br>
+<input type="radio" id="HistoryZone" name="HorN" value="History" checked="(@user.getselectHistoryOrNeighabores==2)" @onclick="@(()=>user.getselectHistoryOrNeighabores=2)">
+<label for="DataZonePlease">ToseeDataZone</label>
+<br>
+<br>
+<br>
+<label for="moneyToY">how much money you have?</label>
+<input type="text" @bind-value="amountcreditsyouruser" @bind-value:event="oninput" id="amountcredits" name="credituser">
+@code {
+
+    Data.User user;
+    double amountcreditsyouruser;
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        user = Data.User.GetInstance;
+        amountcreditsyouruser = user.Somecredts;
+
+    }
+
+}
+

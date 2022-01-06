@@ -1,0 +1,119 @@
+﻿@page "/dataOfNeighabored/{id:int}"
+
+<h3>DataNeighbored</h3>
+<head>
+    <meta http-equiv="refresh" content="10" />
+</head>
+<p><em>Name: @user.Namey</em></p>
+<br>
+<p><em>The Id: @user.getId</em></p>
+<br>
+<label for="moneyToY">how much money you have?</label>
+<input type="text" @bind-value="amountmoncred" @bind-value:event="oninput" id="amountcreditmoney" name="moneycreduser">
+<br>
+<br>
+@if (!user.isManage && user.getselectedZoneOfUser == false)
+{
+    <p><em>you user and select zone not same you that is found</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdNeighbore</th>
+                <th>NameNeighbored</th>
+                <th>amountOfPeople</th>
+                <th>amountOfHealths</th>
+                <th>TotalPatients</th>
+                <th>percentHealths</th>
+                <th>Coffiecient_Infication</th>
+                <th>amountEconomy</th>
+            </tr>
+        </thead>
+        @foreach (var neigh in zone.neighaboress)
+        {
+            <tr>
+                <td>@neigh.getid</td>
+                <td>@neigh.NameNeigh</td>
+                <td>@neigh.somepeop.ToString("#,##")</td>
+                <td>@neigh.somehealts.ToString("#,##")</td>
+                <td>@neigh.somepat.ToString("#,##")</td>
+                <td>@neigh.getPercentHealths</td>
+                <td>@neigh.getinfection_coffiecent</td>
+                <td>@neigh.getAmountEconomy.ToString("#,##")</td>
+            </tr>
+        }
+    </table>
+}
+@code {
+    [Parameter]
+    public int id { get; set; }
+    Data.Country country;
+    Data.Zone zone;
+    Data.User user;
+    int temp;
+    double amountmoncred;
+    protected override void OnInitialized()
+    {
+        user = Data.User.GetInstance;
+        country = Data.Country.GetInstance;
+        foreach (var zon in country.zones)
+        {
+            if (zon.getId == this.id)
+            {
+                zone = zon;
+                break;
+
+
+            }
+        }
+        temp = 0;
+        for (int i = 0; i < country.zones.Count; i++)
+        {
+            if (zone.namezone.Equals(country.zones[i].namezone))
+            {
+                temp = i;
+                break;
+            }
+        }
+        for (int j = 0; j < country.zones[temp].neighaboress.Count; j++)
+        {
+            country.zones[temp].neighaboress[j].getPercentHealths = Math.Round(country.zones[temp].neighaboress[j].getPercentHealths, 4);
+            if(country.zones[temp].neighaboress[j].datamonthneighbored.Count==1)
+            {
+                country.zones[temp].neighaboress[j].getinfection_coffiecent = 1;
+                Math.Round(country.zones[temp].neighaboress[j].getinfection_coffiecent, 4);
+            }
+            else
+            {
+                int p = country.zones[temp].neighaboress[j].datamonthneighbored[country.zones[temp].neighaboress[j].datamonthneighbored.Count - 1].getCountPatients;
+                int p2 = country.zones[temp].neighaboress[j].datamonthneighbored[country.zones[temp].neighaboress[j].datamonthneighbored.Count - 2].getCountPatients;
+                country.zones[temp].neighaboress[j].getinfection_coffiecent = (double)p / p2;
+                country.zones[temp].neighaboress[j].getinfection_coffiecent = Math.Round(country.zones[temp].neighaboress[j].getinfection_coffiecent, 4);
+            }
+        }
+        if (user.nameZone != null)
+        {
+            if (!user.isManage && user.nameZone.Equals(zone.namezone))
+            {
+                user.getselectedZoneOfUser = true;
+
+            }
+        }
+        else
+        {
+            user.getselectedZoneOfUser = false;
+        }
+        if (user.nameZone != null)
+        {
+            if (!user.isManage && !user.nameZone.Equals(zone.namezone))
+                user.getselectedZoneOfUser = false;
+        }
+
+        amountmoncred = user.Somecredts;
+
+
+
+    }
+}

@@ -1,0 +1,146 @@
+﻿@page "/ToSeeUpdateData"
+<h3>TםSeeWhenTheDataUpdate</h3>
+<head>
+    <meta http-equiv="refresh" content="10" />
+</head>
+<p><em>Name: @user.Namey</em></p>
+<br>
+<p><em>The Id: @user.getId</em></p>
+<br>
+<p><em>Zone: @user.nameZone</em></p>
+<br>
+<p><em>neighabored: @user.nameNeighabored </em></p>
+<label for="SelectAmountData">select amount people that will patients and to see the amount of weeks:</label>
+<br>
+<input type="text" @bind-value="peopleEnter" @bind-value:event="oninput" id="selectamountpeople" name="selectamount">
+<input type="text" @bind-value="legalNumbercheck" @bind-value:event="oninput" id="excep" name="explationtouser">
+<br>
+<br>
+<button class="btn btn-primary" @onclick="AmountpeopleEnterPlease">Update Amount People </button>
+<br>
+<br>
+<br>
+<label for="moneyToY">how much money you have?</label>
+<input type="text" @bind-value="amountcreditsyofyo" @bind-value:event="oninput" id="amountcredituse" name="creditsuse">
+
+@code {
+
+    String peopleEnter;
+    String legalNumbercheck;
+    Data.User user;
+    Data.Country country;
+    int peopleenter;
+    Data.Zone zone;
+    int[] peopleamountneigbor;
+    double amountcreditsyofyo;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        user = Data.User.GetInstance;
+        country = Data.Country.GetInstance;
+        peopleamountneigbor = new int[searchcount()];
+        amountcreditsyofyo = user.Somecredts;
+
+
+    }
+    private void AmountpeopleEnterPlease()
+    {
+        int countweeks = 0;
+        try
+        {
+            if (!user.getLogin)
+                legalNumbercheck = "you login please";
+            else
+            {
+                if (!user.getisload)
+                    legalNumbercheck = "you load the data";
+                else
+                {
+                    if ((user.nameZone == null) || (user.nameZone == ""))
+                        legalNumbercheck = "You select zone please";
+                    else
+                    {
+                        peopleenter = int.Parse(peopleEnter);
+                        if (!user.isManage && user.Somecredts < 100)
+                        {
+                            legalNumbercheck = "no enough money";
+                        }
+                        else
+                        {
+                            if (!user.isManage)
+                                user.Somecredts = user.Somecredts - 100;
+                            int p = searchzone();
+                            if (peopleenter >= country.zones[p].totalpateints)
+                                legalNumbercheck = "enter more people that patients people in zone";
+                            else
+                            {
+                                int y = country.zones[p].totalpateints;
+                                int count = searchcount();
+                                for (int i = 0; i < count; i++)
+                                    peopleamountneigbor[i] = country.zones[p].neighaboress[i].somehealts;
+                                while (y > peopleenter)
+                                {
+                                    double sum = 0;
+                                    for (int i = 0; i < count; i++)
+                                    {
+                                        int somepatient = country.zones[p].neighaboress[i].somepeop - peopleamountneigbor[i];
+                                        double mana = (double)(somepatient) / (double)(country.zones[p].neighaboress[i].somepeop);
+                                        double hezka = Math.Pow(2.72, mana);
+                                        peopleamountneigbor[i] = (int)(hezka * somepatient - somepatient + peopleamountneigbor[i]);
+                                        sum = sum + (double)(peopleamountneigbor[i]) / (double)(country.zones[p].neighaboress[i].somepeop);
+
+                                    }
+                                    countweeks++;
+                                    double mena = sum / count;
+                                    y = (int)(y * mena);
+
+
+                                }
+                                legalNumbercheck = countweeks.ToString() + " " + "Weeks";
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        catch (Exception e)
+        {
+
+
+        }
+
+    }
+
+    private int searchzone()
+    {
+        int p = 0;
+        for (int i = 0; i < country.zones.Count; i++)
+        {
+            if (country.zones[i].namezone.Equals(user.nameZone))
+            {
+                p = i;
+                break;
+            }
+        }
+        return p;
+
+    }
+    private int searchcount()
+    {
+        int count = 0;
+        if (user.nameZone != null && user.nameZone != "")
+        {
+            foreach (var zon in country.zones)
+            {
+                if (zon.namezone.Equals(user.nameZone))
+                {
+                    zone = zon;
+                    break;
+                }
+            }
+            count = zone.neighaboress.Count;
+        }
+        return count;
+    }
+}

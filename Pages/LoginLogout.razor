@@ -1,0 +1,37 @@
+﻿@page "/Loggin"
+@inject NavigationManager NavigationManager
+    <head>
+        <meta http-equiv="refresh" content="10" />
+    </head>
+<h3>LoginLogout</h3>
+<label for="username">Username:</label>
+<br>
+<input type="text" @bind-value="user.Namey" @bind-value:event="oninput" id="username" name="username">
+<br>
+<label for="pwd">Password:</label>
+<br>
+<input type="password" @bind-value="user.getId" @bind-value:event="oninput" id="pwd" name="pwd">
+<br>
+<br>
+<button class="btn btn-primary" @onclick="movepage">Continue</button>
+
+
+
+
+@code {
+
+     Data.User user;
+
+     protected override void OnInitialized()
+     {
+          base.OnInitialized();
+          user = Data.User.GetInstance;
+     }
+
+     private void movepage()
+     {
+          user.getLogin = true;
+          NavigationManager.NavigateTo("/roleSelect");
+     }
+
+}

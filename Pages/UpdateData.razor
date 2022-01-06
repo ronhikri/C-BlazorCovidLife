@@ -1,0 +1,221 @@
+﻿@page "/updateData"
+@inject NavigationManager Nava
+@inject NavigationManager nnm
+<h3>Update-Data</h3>
+<head>
+    <meta http-equiv="refresh" content="10" />
+</head>
+<p><em>Name: @use.Namey</em></p>
+<br>
+<p><em>The Id: @use.getId</em></p>
+
+<br>
+<br>
+@if ((use.getLogin == false) || (use.getisload == false))
+{
+    <p><em>please login and loadData</em></p>
+}
+else
+{
+    <label for="city">Choose a city:</label>
+    <select @onchange="@selectedcity" name="city" id="cities">
+        @foreach (var zon in country.zones)
+        {
+            <option value="@zon.namezone">@zon.namezone</option>
+        }
+    </select>
+    <br>
+    <br>
+    <label for="neighbored">Choose a neighabor:</label>
+    <select @onchange="@selectedNeighabored" name="neighbor" id="neighabored">
+        @foreach (var zon in country.zones)
+        {
+            if (zon.namezone.Equals(use.nameZone))
+            {
+                zonn = zon;
+                break;
+            }
+        }
+        @foreach (var neigh in zonn.neighaboress)
+        {
+            <option value="@neigh.NameNeigh">@neigh.NameNeigh</option>
+        }
+    </select>
+    <br>
+    <br>
+    <label for="place">Choose a place:</label>
+    <select @onchange="@selectedEventPlace" name="place" id="places">
+        @foreach (var zon in country.zones)
+        {
+            if (zon.namezone.Equals(use.nameZone))
+            {
+                zonn = zon;
+                break;
+            }
+
+        }
+        @foreach (var nei in zonn.neighaboress)
+        {
+
+            @foreach (var evena in nei.Eventss)
+            {
+                if (use.nameEventPlace == 1)
+                {
+                    if (evena is Data.SuperMarket)
+                    {
+                        <option value="@evena.NameEventPlace">@evena.NameEventPlace</option>
+                    }
+                }
+                if (use.nameEventPlace == 2)
+                {
+                    if (evena is Data.School)
+                    {
+                        <option value="@evena.NameEventPlace">@evena.NameEventPlace</option>
+                    }
+                }
+                if (use.nameEventPlace == 3)
+                {
+                    if (evena is Data.CelebrationPlace)
+                    {
+                        <option value="@evena.NameEventPlace">@evena.NameEventPlace</option>
+                    }
+                }
+            }
+        }
+    </select>
+}
+<br>
+<br>
+<button class="btn btn-primary">update your Details</button>
+<br>
+<button class="btn btn-primary" @onclick="movepagessss">Enter to Manager page</button>
+<button class="btn btn-primary" @onclick="movepagesssss">Enter to user pages</button>
+<br>
+<br>
+<label for="moneyToY">how much money you have?</label>
+<input type="text" @bind-value="amountmoneyofyou" @bind-value:event="oninput" id="amountusr" name="creditsOfUsr">
+
+@code
+{
+    String selectedString;
+    Data.Country country;
+    Data.User use;
+    Data.Zone zonn;
+    Data.Zone zone;
+    Data.Neighabored neighab;
+    Data.Neighabored neighabb;
+    double amountmoneyofyou;
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        use = Data.User.GetInstance;
+        country = Data.Country.GetInstance;
+        if(use.getcountupdateCity==0)
+        {
+            if (use.getLogin && use.getisload)
+            {
+                use.nameZone = "Metula";
+                use.nameNeighabored = "NEVE-HAIMMetula";
+                use.getcountupdateCity++;
+                if (use.nameEventPlace == 1)
+                {
+                    use.NmmeEvenaPlace = "Suk-YeudaNEVE-HAIMMetula";
+                }
+                if (use.nameEventPlace == 2)
+                {
+                    use.NmmeEvenaPlace = "Tichon-HaderaNEVE-HAIMMetula";
+                }
+                if (use.nameEventPlace == 3)
+                {
+                    use.NmmeEvenaPlace = "White-nightsNEVE-HAIMMetula";
+                }
+            }
+        }
+        else
+        {
+            use.getcountupdateCity++;
+
+        }
+        amountmoneyofyou = use.Somecredts;
+
+    }
+
+    private void movepagessss()
+    {
+        Nava.NavigateTo("/optMange");
+    }
+    private void movepagesssss()
+    {
+        nnm.NavigateTo("/optToUser");
+    }
+    private void selectedcity(ChangeEventArgs e)
+    {
+        use.nameZone = e.Value.ToString();
+        foreach (var zoni in country.zones)
+        {
+            if (zoni.namezone.Equals(use.nameZone))
+            {
+                zone = zoni;
+                break;
+            }
+        }
+        use.nameNeighabored = zone.neighaboress[0].NameNeigh;
+        foreach (var neit in zone.neighaboress)
+        {
+            if (neit.NameNeigh.Equals(use.nameNeighabored))
+            {
+                neighabb = neit;
+                break;
+            }
+        }
+        if (use.nameEventPlace == 1)
+        {
+            foreach (var evenaa in neighabb.Eventss)
+            {
+                if (evenaa is Data.SuperMarket)
+                {
+                    use.NmmeEvenaPlace = evenaa.NameEventPlace;
+                    break;
+                }
+
+            }
+        }
+        if (use.nameEventPlace == 2)
+        {
+            foreach (var evenna in neighabb.Eventss)
+            {
+                if (evenna is Data.School)
+                {
+                    use.NmmeEvenaPlace = evenna.NameEventPlace;
+                    break;
+                }
+            }
+        }
+        if (use.nameEventPlace == 3)
+        {
+            foreach (var evenna in neighabb.Eventss)
+            {
+                if (evenna is Data.CelebrationPlace)
+                {
+                    use.NmmeEvenaPlace = evenna.NameEventPlace;
+                    break;
+                }
+            }
+        }
+
+    }
+    private void selectedNeighabored(ChangeEventArgs e)
+    {
+        use.nameNeighabored = e.Value.ToString();
+
+    }
+    private void selectedEventPlace(ChangeEventArgs e)
+    {
+        use.NmmeEvenaPlace = e.Value.ToString();
+
+    }
+
+
+
+
+}

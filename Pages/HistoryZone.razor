@@ -1,0 +1,117 @@
+﻿@page "/HistoryOfZone/{id:int}"
+<h3>HistoryZone</h3>
+<head>
+    <meta http-equiv="refresh" content="10" />
+</head>
+<p><em>Name: @user.Namey</em></p>
+<br>
+<p><em>The Id: @user.getId</em></p>
+<br>
+<label for="moneyToY">how much money you have?</label>
+<input type="text" @bind-value="amountmoncrediut" @bind-value:event="oninput" id="amountcreditmo" name="moneycreduse">
+<br>
+<br>
+@if (!user.isManage && user.getselectedZoneOfUser == false)
+{
+    <p><em>you selected zone that you are not found</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdZone</th>
+                <th>NameZone</th>
+                <th>NumWeek</th>
+                <th>TotalPeople</th>
+                <th>TotalHealths</th>
+                <th>TotalPatients</th>
+                <th>percentHealths</th>
+                <th>CoffiectionInfaction</th>
+                <th>amountEconomy</th>
+                <th>Colour</th>
+
+            </tr>
+        </thead>
+        @foreach (var dataWeeks in zone.datamonthzone)
+        {
+            <tr>
+                <td>@zone.getId</td>
+                <td>@zone.namezone</td>
+                <td>@dataWeeks.getMonthId</td>
+                <td>@dataWeeks.getCountPeople.ToString("#,##")</td>
+                <td>@dataWeeks.getCountHealths.ToString("#,##")</td>
+                <td>@dataWeeks.getCountPatients.ToString("#,##")</td>
+                <td>@dataWeeks.getPercentHealths</td>
+                <td>@dataWeeks.get_Coffiecint_Infaction</td>
+                <td>@dataWeeks.getAmountEconomy.ToString("#,##")</td>
+                <td>@dataWeeks.getcolour</td>
+            </tr>
+        }
+    </table>
+}
+
+@code {
+
+    [Parameter]
+    public int id { get; set; }
+    Data.Country country;
+    Data.Zone zone;
+    Data.User user;
+    int temp;
+    double amountmoncrediut;
+    protected override void OnInitialized()
+    {
+        user = Data.User.GetInstance;
+        country = Data.Country.GetInstance;
+        foreach (var zon in country.zones)
+        {
+            if (zon.getId == this.id)
+            {
+                zone = zon;
+                break;
+
+
+            }
+        }
+        temp = 0;
+        for (int i = 0; i < country.zones.Count; i++)
+        {
+            if (zone.namezone.Equals(country.zones[i].namezone))
+            {
+                temp = i;
+                break;
+            }
+        }
+        for (int j = 0; j < country.zones[temp].datamonthzone.Count; j++)
+        {
+            country.zones[temp].datamonthzone[j].getPercentHealths = (double)country.zones[temp].datamonthzone[j].getCountHealths / country.zones[temp].datamonthzone[j].getCountPeople;
+            country.zones[temp].datamonthzone[j].getPercentHealths = Math.Round(country.zones[temp].datamonthzone[j].getPercentHealths, 4);
+        }
+        country.zones[temp].datamonthzone[0].get_Coffiecint_Infaction = 1;
+        for(int j=1;j<country.zones[temp].datamonthzone.Count;j++)
+        {
+            int p = country.zones[temp].datamonthzone[j].getCountPatients;
+            int p2 = country.zones[temp].datamonthzone[j - 1].getCountPatients;
+            country.zones[temp].datamonthzone[j].get_Coffiecint_Infaction = (double)p / p2;
+            country.zones[temp].datamonthzone[j].get_Coffiecint_Infaction = Math.Round(country.zones[temp].datamonthzone[j].get_Coffiecint_Infaction, 4);
+        }
+        if (user.nameZone != null)
+        {
+            if (!user.isManage && user.nameZone.Equals(zone.namezone))
+            {
+                user.getselectedZoneOfUser = true;
+
+            }
+        }
+        else
+            user.getselectedZoneOfUser = false;
+        if (user.nameZone != null)
+        {
+            if (!user.isManage && !user.nameZone.Equals(zone.namezone))
+                user.getselectedZoneOfUser = false;
+        }
+        amountmoncrediut = user.Somecredts;
+    }
+}
+

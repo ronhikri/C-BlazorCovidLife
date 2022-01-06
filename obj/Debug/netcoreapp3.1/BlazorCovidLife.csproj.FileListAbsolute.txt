@@ -1,0 +1,146 @@
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\bin\Debug\netcoreapp3.1\appsettings.Development.json
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\bin\Debug\netcoreapp3.1\appsettings.json
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\bin\Debug\netcoreapp3.1\BlazorCovidLife.exe
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\bin\Debug\netcoreapp3.1\BlazorCovidLife.deps.json
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\bin\Debug\netcoreapp3.1\BlazorCovidLife.runtimeconfig.json
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\bin\Debug\netcoreapp3.1\BlazorCovidLife.runtimeconfig.dev.json
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\bin\Debug\netcoreapp3.1\BlazorCovidLife.dll
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\bin\Debug\netcoreapp3.1\BlazorCovidLife.pdb
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\bin\Debug\netcoreapp3.1\BlazorCovidLife.Views.dll
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\bin\Debug\netcoreapp3.1\BlazorCovidLife.Views.pdb
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\BlazorCovidLife.csprojAssemblyReference.cache
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\BlazorCovidLife.AssemblyInfoInputs.cache
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\BlazorCovidLife.AssemblyInfo.cs
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\BlazorCovidLife.csproj.CoreCompileInputs.cache
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\BlazorCovidLife.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\BlazorCovidLife.RazorComponent.input.cache
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\RazorDeclaration\App.razor.g.cs
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Counter.razor.g.cs
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\FetchData.razor.g.cs
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Index.razor.g.cs
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\LoginLogout.razor.g.cs
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\RazorDeclaration\Shared\MainLayout.razor.g.cs
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\RazorDeclaration\Shared\NavMenu.razor.g.cs
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\RazorDeclaration\Shared\SurveyPrompt.razor.g.cs
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\RazorDeclaration\_Imports.razor.g.cs
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\BlazorCovidLife.RazorComponent.output.cache
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\RazorDeclaration\BlazorCovidLife.dll
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\BlazorCovidLife.TagHelpers.input.cache
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\BlazorCovidLife.TagHelpers.output.cache
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\BlazorCovidLife.RazorCoreGenerate.cache
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\Razor\App.razor.g.cs
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\Razor\Pages\Counter.razor.g.cs
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\Razor\Pages\FetchData.razor.g.cs
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\Razor\Pages\Index.razor.g.cs
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\Razor\Pages\LoginLogout.razor.g.cs
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\Razor\Shared\MainLayout.razor.g.cs
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\Razor\Shared\NavMenu.razor.g.cs
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\Razor\Shared\SurveyPrompt.razor.g.cs
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\Razor\_Imports.razor.g.cs
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\Razor\Pages\Error.cshtml.g.cs
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\Razor\Pages\_Host.cshtml.g.cs
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\BlazorCovidLife.RazorAssemblyInfo.cache
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\BlazorCovidLife.RazorAssemblyInfo.cs
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\staticwebassets\BlazorCovidLife.StaticWebAssets.Manifest.cache
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\staticwebassets\BlazorCovidLife.StaticWebAssets.xml
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\scopedcss\bundle\BlazorCovidLife.styles.css
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\BlazorCovidLife.RazorTargetAssemblyInfo.cache
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\BlazorCovidLife.RazorTargetAssemblyInfo.cs
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\BlazorCovidLife.Views.pdb
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\BlazorCovidLife.dll
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\BlazorCovidLife.pdb
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\BlazorCovidLife.genruntimeconfig.cache
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\BlazorCovidLife.csproj.CopyComplete
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\LoadFromFile.razor.g.cs
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\Razor\Pages\LoadFromFile.razor.g.cs
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\SeletEvent.razor.g.cs
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\Razor\Pages\SeletEvent.razor.g.cs
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\UpdateData.razor.g.cs
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\Razor\Pages\UpdateData.razor.g.cs
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\OptionToUserPlease.razor.g.cs
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\OptManagerPlease.razor.g.cs
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\Razor\Pages\OptionToUserPlease.razor.g.cs
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\Razor\Pages\OptManagerPlease.razor.g.cs
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Charge_Credits.razor.g.cs
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\Razor\Pages\Charge_Credits.razor.g.cs
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\SuperMarketOptionsForClient.razor.g.cs
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\Razor\Pages\SuperMarketOptionsForClient.razor.g.cs
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\OptionforOccasionForClient.razor.g.cs
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\Razor\Pages\OptionforOccasionForClient.razor.g.cs
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\GuestOptionsForOccasion.razor.g.cs
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\Razor\Pages\GuestOptionsForOccasion.razor.g.cs
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\UserSchoolOptions.razor.g.cs
+C:\Users\רון הכרי\source\repos\BlazorCovidLife\obj\Debug\netcoreapp3.1\Razor\Pages\UserSchoolOptions.razor.g.cs
+C:\BlazorCovidLife\bin\Debug\netcoreapp3.1\appsettings.Development.json
+C:\BlazorCovidLife\bin\Debug\netcoreapp3.1\appsettings.json
+C:\BlazorCovidLife\bin\Debug\netcoreapp3.1\BlazorCovidLife.exe
+C:\BlazorCovidLife\bin\Debug\netcoreapp3.1\BlazorCovidLife.deps.json
+C:\BlazorCovidLife\bin\Debug\netcoreapp3.1\BlazorCovidLife.runtimeconfig.json
+C:\BlazorCovidLife\bin\Debug\netcoreapp3.1\BlazorCovidLife.runtimeconfig.dev.json
+C:\BlazorCovidLife\bin\Debug\netcoreapp3.1\BlazorCovidLife.dll
+C:\BlazorCovidLife\bin\Debug\netcoreapp3.1\BlazorCovidLife.pdb
+C:\BlazorCovidLife\bin\Debug\netcoreapp3.1\BlazorCovidLife.Views.dll
+C:\BlazorCovidLife\bin\Debug\netcoreapp3.1\BlazorCovidLife.Views.pdb
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\BlazorCovidLife.csprojAssemblyReference.cache
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\BlazorCovidLife.AssemblyInfoInputs.cache
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\BlazorCovidLife.AssemblyInfo.cs
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\BlazorCovidLife.csproj.CoreCompileInputs.cache
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\BlazorCovidLife.MvcApplicationPartsAssemblyInfo.cache
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\BlazorCovidLife.RazorComponent.input.cache
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\RazorDeclaration\App.razor.g.cs
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Charge_Credits.razor.g.cs
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\Index.razor.g.cs
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\LoadFromFile.razor.g.cs
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\LoginLogout.razor.g.cs
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\OptManagerPlease.razor.g.cs
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\SeletEvent.razor.g.cs
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\UpdateData.razor.g.cs
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\RazorDeclaration\Shared\MainLayout.razor.g.cs
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\RazorDeclaration\Shared\NavMenu.razor.g.cs
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\RazorDeclaration\Shared\SurveyPrompt.razor.g.cs
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\RazorDeclaration\_Imports.razor.g.cs
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\BlazorCovidLife.RazorComponent.output.cache
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\RazorDeclaration\BlazorCovidLife.dll
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\BlazorCovidLife.TagHelpers.input.cache
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\BlazorCovidLife.TagHelpers.output.cache
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\BlazorCovidLife.RazorCoreGenerate.cache
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\Razor\App.razor.g.cs
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\Razor\Pages\Charge_Credits.razor.g.cs
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\Razor\Pages\Index.razor.g.cs
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\Razor\Pages\LoadFromFile.razor.g.cs
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\Razor\Pages\LoginLogout.razor.g.cs
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\Razor\Pages\OptManagerPlease.razor.g.cs
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\Razor\Pages\SeletEvent.razor.g.cs
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\Razor\Pages\UpdateData.razor.g.cs
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\Razor\Shared\MainLayout.razor.g.cs
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\Razor\Shared\NavMenu.razor.g.cs
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\Razor\Shared\SurveyPrompt.razor.g.cs
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\Razor\_Imports.razor.g.cs
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\Razor\Pages\Error.cshtml.g.cs
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\Razor\Pages\_Host.cshtml.g.cs
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\BlazorCovidLife.RazorAssemblyInfo.cache
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\BlazorCovidLife.RazorAssemblyInfo.cs
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\staticwebassets\BlazorCovidLife.StaticWebAssets.Manifest.cache
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\staticwebassets\BlazorCovidLife.StaticWebAssets.xml
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\scopedcss\bundle\BlazorCovidLife.styles.css
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\BlazorCovidLife.RazorTargetAssemblyInfo.cache
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\BlazorCovidLife.RazorTargetAssemblyInfo.cs
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\BlazorCovidLife.Views.pdb
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\BlazorCovidLife.dll
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\BlazorCovidLife.pdb
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\BlazorCovidLife.genruntimeconfig.cache
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\BlazorCovidLife.csproj.CopyComplete
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\DataCountry.razor.g.cs
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\DataNeighbored.razor.g.cs
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\Razor\Pages\DataCountry.razor.g.cs
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\Razor\Pages\DataNeighbored.razor.g.cs
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\ToSeeWhenTheDataUpdate.razor.g.cs
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\Razor\Pages\ToSeeWhenTheDataUpdate.razor.g.cs
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\ToSeeUpdateNeighbored.razor.g.cs
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\Razor\Pages\ToSeeUpdateNeighbored.razor.g.cs
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\HistoryOrNeighabor.razor.g.cs
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\Razor\Pages\HistoryOrNeighabor.razor.g.cs
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\HistoryZone.razor.g.cs
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\Razor\Pages\HistoryZone.razor.g.cs
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\RazorDeclaration\Pages\SeeColourZone.razor.g.cs
+C:\BlazorCovidLife\obj\Debug\netcoreapp3.1\Razor\Pages\SeeColourZone.razor.g.cs

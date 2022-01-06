@@ -1,0 +1,156 @@
+﻿@page "/DataOfCountry"
+<h3>DataCountry</h3>
+<head>
+    <meta http-equiv="refresh" content="10" />
+</head>
+<p><em>Name: @user.Namey</em></p>
+<br>
+<p><em>The Id: @user.getId</em></p>
+<br>
+<label for="moneyToY">how much money you have?</label>
+<input type="text" @bind-value="amountcredyou" @bind-value:event="oninput" id="amountmoneycredits" name="credituser">
+<br>
+<br>
+@if ((user.getisload == false) || (user.getLogin == false))
+{
+    <p><em>please login and loadData </em></p>
+}
+else
+{
+    @if ((!user.isManage) && (user.Somecredts <= 0))
+    {
+        <p><em>you user and no enough money</em></p>
+    }
+    else
+    {
+        @if (user.getselectHistoryOrNeighabores == 1)
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>IdZone</th>
+                        <th>nameZone</th>
+                        <th>TotalPeople</th>
+                        <th>TotalHealths</th>
+                        <th>TotalPatients</th>
+                        <th>percentHealths</th>
+                        <th>amountEconomy</th>
+                        <th>Coffiecient_Infection</th>
+                        <th>ColourOfZone></th>
+                        <th>OpenOrClosedZone</th>
+                    </tr>
+                </thead>
+                @foreach (var zon in country.zones)
+                {
+
+                    <tr>
+
+                        <td><a href="@($"/dataOfNeighabored/{zon.getId}")" class="nav-link">@zon.getId</a></td>
+                        <td>@zon.namezone</td>
+                        <td>@zon.totalpeople.ToString("#,##")</td>
+                        <td>@zon.totalhealths.ToString("#,##")</td>
+                        <td>@zon.totalpateints.ToString("#,##")</td>
+                        <td>@zon.HealthsPercent</td>
+                        <td>@zon.getAmountEconomy.ToString("#,##")</td>
+                        <td>@zon.getCofficent_infection</td>
+                        <td>@zon.getColor</td>
+                        <td>@zon.OpenOrClosed</td>
+                    </tr>
+                }
+            </table>
+        }
+        else
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>IdZone</th>
+                        <th>nameZone</th>
+                        <th>TotalPeople</th>
+                        <th>TotalHealths</th>
+                        <th>TotalPatients</th>
+                        <th>percentHealths</th>
+                        <th>amountEconomy</th>
+                        <th>Coffiecient_Infection</th>
+                        <th>ColourOfZzone</th>
+                        <th>OpenOrClosedZone</th>
+                    </tr>
+                </thead>
+                @foreach (var zon in country.zones)
+                {
+            <tr>
+
+                <td><a href="@($"/HistoryOfZone/{zon.getId}")" class="nav-link">@zon.getId</a></td>
+                <td>@zon.namezone</td>
+                <td>@zon.totalpeople.ToString("#,##")</td>
+                <td>@zon.totalhealths.ToString("#,##")</td>
+                <td>@zon.totalpateints.ToString("#,##")</td>
+                <td>@zon.HealthsPercent</td>
+                <td>@zon.getAmountEconomy.ToString("#,##")</td>
+                <td>@zon.getCofficent_infection</td>
+                <td>@zon.getColor</td>
+                <td>@zon.OpenOrClosed</td>
+            </tr>
+                }
+            </table>
+        }
+    }
+}
+@code {
+    String data;
+    Data.Country country;
+    Data.dataMonthZone datazone;
+    Data.User user;
+    double amountcredyou;
+
+    protected override void OnInitialized()
+    {
+        user = Data.User.GetInstance;
+        if (user.getLogin == true && user.getisload == true)
+        {
+            if (!user.isManage && user.Somecredts >= 0 && user.Somecredts <= 100)
+                user.Somecredts = 0;
+            if (!user.isManage && user.Somecredts > 100)
+                user.Somecredts = user.Somecredts - 100;
+        }
+
+        country = Data.Country.GetInstance;
+        for (int i = 0; i < country.zones.Count; i++)
+        {
+            country.zones[i].HealthsPercent = (double)(country.zones[i].totalhealths) / (double)(country.zones[i].totalpeople);
+            country.zones[i].HealthsPercent = Math.Round(country.zones[i].HealthsPercent, 4);
+            if (country.zones[i].datamonthzone.Count == 1)
+            {
+                country.zones[i].getCofficent_infection = 1;
+                country.zones[i].getCofficent_infection = Math.Round(country.zones[i].getCofficent_infection, 4);
+            }
+            else
+            {
+                int p = country.zones[i].datamonthzone[country.zones[i].datamonthzone.Count - 1].getCountPatients;
+                int p2 = country.zones[i].datamonthzone[country.zones[i].datamonthzone.Count - 2].getCountPatients;
+                country.zones[i].getCofficent_infection = (double)(p) / p2;
+                country.zones[i].getCofficent_infection = Math.Round(country.zones[i].getCofficent_infection, 4);
+            }
+        }
+        updateRedCity();
+        amountcredyou = user.Somecredts;
+    }
+
+    private void updateRedCity()
+    {
+        double avg = 0;
+        double sum = 0;
+        foreach (var zon in country.zones)
+        {
+            sum = sum + zon.HealthsPercent;
+        }
+        avg = (double)(sum) / (double)(country.zones.Count);
+        for (int i = 0; i < country.zones.Count; i++)
+        {
+            if (country.zones[i].HealthsPercent >= avg)
+                country.zones[i].OpenOrClosed = "Open";
+            else
+                country.zones[i].OpenOrClosed = "Closed";
+        }
+    }
+}

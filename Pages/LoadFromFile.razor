@@ -1,0 +1,65 @@
+﻿@page "/roleSelect"
+@inject NavigationManager Nav
+    <head>
+        <meta http-equiv="refresh" content="10" />
+    </head>
+    <p><em>Name: @user.Namey</em></p>
+<br>
+<p><em>The Id: @user.getId</em></p>
+
+            <button class="btn btn-primary" @onclick="loadData"> Load From File</button>
+
+            <br>
+            <br>
+            <h3>select-Role</h3>
+            <br>
+            <input type="radio" id="manager" name="gender" value="Manager" checked="(@user.isManage==true)" @onclick="@(()=>user.isManage=true)">
+            <label for="man">Manager</label>
+            <br>
+            <input type="radio" id="user" name="gender" value="User" checked-="(@user.isManage==false)" @onclick="@(()=>user.isManage=false)">
+            <label for="uSer">User</label>
+            <br>
+            <button class="btn btn-primary" @onclick="movepages" disabled="@isdisabled">enter to page to select event or school or market </button>
+            <br>
+            <button class="btn btn-primary" @onclick="moveseeallData" disabled="@isdisabled">enter to page to see all data </button>
+            <br>
+            <br>
+            <label for="moneyToYou">how much money you have?</label>
+            <input type="text" @bind-value="amountmoney" @bind-value:event="oninput" id="amountmoneyOfUser" name="MoneyOfUser">
+
+            @code {
+                protected bool isdisabled = true;
+                double amountmoney;
+
+                public Data.Country country;
+                public Data.User user;
+
+                protected override void OnInitialized()
+                {
+                    base.OnInitialized();
+                    user = Data.User.GetInstance;
+                    amountmoney = user.Somecredts;
+                    if(user.getisload==true)
+                    {
+                        isdisabled = false;
+                    }
+
+                }
+
+
+                private void movepages()
+                {
+                    Nav.NavigateTo("/SelectEvent");
+                }
+                private void loadData()
+                {
+                    user.getisload = true;
+                    country = Data.Country.GetInstance;
+                    isdisabled = false;
+                }
+                private void moveseeallData()
+                {
+                    Nav.NavigateTo("/DataOfCountry");
+                }
+
+            }

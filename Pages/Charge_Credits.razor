@@ -1,0 +1,50 @@
+﻿@page "/ChargeCredits"
+
+<h3>Charge_Credits</h3>
+<head>
+    <meta http-equiv="refresh" content="10" />
+</head>
+<p><em>Name: @user.Namey</em></p>
+<br>
+<p><em>The Id: @user.getId</em></p>
+<br>
+
+<label for="HowMoney">How Amount Money You Select:</label>
+<input type="text" @bind-value="CounterMoney" @bind-value:event="oninput" id="selectamountMoney" name="selectMoney">
+<input type="text" @bind-value="illegalString" @bind-value:event="oninput" id="showillegalOrLegal" name="showExplationToUser">
+<br>
+<button class="btn btn-primary" @onclick="UpdateMoney">Update Money To User </button>
+
+@code {
+
+    Data.User user;
+    String CounterMoney = "";
+    String illegalString = "";
+    double CurrentMoney;
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        user = Data.User.GetInstance;
+    }
+    private void UpdateMoney()
+    {
+        try
+        {
+            CurrentMoney = double.Parse(CounterMoney);
+            if (CurrentMoney < 0)
+            {
+                illegalString = "You Should to enter number bigger 0";
+            }
+            else
+            {
+                user.Somecredts = user.Somecredts + CurrentMoney;
+                illegalString = "You add your money";
+            }
+        }
+        catch (Exception e)
+        {
+            illegalString = "you should to enter double number";
+        }
+    }
+
+}
